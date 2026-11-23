@@ -1,7 +1,7 @@
 // ⚠️ BURANI ÖZ REPO-NLA DƏYİŞ
 const CONFIG = {
   GITHUB_USER: "eagle18-s",
-  GITHUB_REPO: "WebKassa",
+  GITHUB_REPO: "WebKassa-",
   GITHUB_BRANCH: "main",
   GITHUB_TOKEN: "", // PAT — sonra localStorage-dən yüklənəcək
 
