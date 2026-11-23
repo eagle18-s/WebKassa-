@@ -1,1 +1,20 @@
-
+{
+  "kassas": [
+    {
+      "id": "KS-001",
+      "name": "Baş Kassa",
+      "location": "Mağaza 1 - Giriş",
+      "status": "open",
+      "balance": 0,
+      "currency": "AZN"
+    },
+    {
+      "id": "KS-002",
+      "name": "Anbar Kassa",
+      "location": "Anbar",
+      "status": "open",
+      "balance": 0,
+      "currency": "AZN"
+    }
+  ]
+}
