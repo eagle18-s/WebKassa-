@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <title>WebKassa — Anbar & Kassa</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>" />
+</head>
+<body>
 
+  <!-- LOADER -->
+  <div id="loader" class="loader">
+    <div class="neon-spinner"></div>
+    <p>WebKassa yüklənir...</p>
+  </div>
+
+  <!-- LOGIN EKRANI -->
+  <section id="login-screen" class="screen hidden">
+    <div class="glass-card login-card fade-in">
+      <div class="logo">💰 WebKassa</div>
+      <p class="subtitle">Anbar & Kassa Sistemi</p>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="İstifadəçi adı" required autocomplete="username" />
+        <input type="password" id="password" placeholder="Şifrə" required autocomplete="current-password" />
+        <button type="submit" class="btn-primary">Daxil ol</button>
+      </form>
+      <p id="login-error" class="error-text"></p>
+      <p class="hint">Demo: <b>admin</b> / <b>admin123</b></p>
+    </div>
+  </section>
+
+  <!-- KASSA SEÇİM EKRANI -->
+  <section id="kassa-select-screen" class="screen hidden">
+    <header class="topbar">
+      <h2>Kassa seç</h2>
+      <button id="logout-btn" class="btn-ghost">Çıxış</button>
+    </header>
+    <div id="kassa-list" class="kassa-grid"></div>
+  </section>
+
+  <!-- ƏSAS KASSA EKRANI -->
+  <section id="main-screen" class="screen hidden">
+    <header class="topbar main-topbar">
+      <div>
+        <span id="kassa-name" class="kassa-name">Kassa</span>
+        <span id="kassa-status" class="status-badge">●</span>
+      </div>
+      <div class="balance-box">
+        <small>Balans</small>
+        <strong id="balance">0.00 ₼</strong>
+      </div>
+    </header>
+
+    <main class="kassa-main">
+      <button id="scan-btn" class="scan-fab" aria-label="Barkod skan et">
+        <span class="scan-icon">📷</span>
+        <span class="scan-text">Skan et</span>
+        <span class="scan-line"></span>
+      </button>
+
+      <div id="last-scan" class="last-scan hidden">
+        <small>Son skan</small>
+        <strong id="last-scan-name">—</strong>
+        <span id="last-scan-price">—</span>
+      </div>
+
+      <div class="quick-stats">
+        <div class="stat-card glass-card">
+          <small>Bu gün</small>
+          <strong id="today-total">0.00 ₼</strong>
+        </div>
+        <div class="stat-card glass-card">
+          <small>Satış</small>
+          <strong id="today-count">0</strong>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-page="scan" class="nav-btn active">📷 Skan</button>
+      <button data-page="cart" class="nav-btn">🛒 Səbət <span id="cart-count" class="badge">0</span></button>
+      <button data-page="stock" class="nav-btn">📦 Anbar</button>
+      <button data-page="reports" class="nav-btn">📊 Hesabat</button>
+    </nav>
+  </section>
+
+  <!-- SKANER MODAL -->
+  <div id="scanner-modal" class="modal hidden">
+    <div class="modal-content scanner-content">
+      <div class="scanner-header">
+        <h3>Barkod skan</h3>
+        <button id="close-scanner" class="btn-ghost">✕</button>
+      </div>
+      <video id="scanner-video" playsinline muted></video>
+      <div class="scan-overlay"><div class="scan-target"></div></div>
+      <p id="scanner-msg" class="scanner-msg">Barkodu kameraya göstər...</p>
+    </div>
+  </div>
+
+  <!-- SƏBƏT PANELİ -->
+  <div id="cart-panel" class="panel hidden">
+    <div class="panel-header">
+      <h3>Səbət</h3>
+      <button id="close-cart" class="btn-ghost">✕</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-total">
+      <div><span>Cəm:</span> <strong id="cart-total">0.00 ₼</strong></div>
+      <button id="pay-btn" class="btn-primary">Ödəniş</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- SUCCESS CONFETTI -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="js/config.js"></script>
+  <script src="js/github-api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/scanner.js"></script>
+  <script src="js/kassa.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
