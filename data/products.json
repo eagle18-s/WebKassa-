@@ -1,1 +1,48 @@
-
+{
+  "products": [
+    {
+      "id": "PRD-10001",
+      "barcode": "4760001234567",
+      "name": "Coca-Cola 0.5L",
+      "category": "İçki",
+      "price": 1.50,
+      "cost": 1.00,
+      "stock": 145,
+      "minStock": 20,
+      "unit": "ədəd"
+    },
+    {
+      "id": "PRD-10002",
+      "barcode": "4760001234568",
+      "name": "Fanta 0.5L",
+      "category": "İçki",
+      "price": 1.50,
+      "cost": 1.00,
+      "stock": 80,
+      "minStock": 15,
+      "unit": "ədəd"
+    },
+    {
+      "id": "PRD-10003",
+      "barcode": "4760001234569",
+      "name": "Çörək",
+      "category": "Ərzaq",
+      "price": 0.80,
+      "cost": 0.50,
+      "stock": 25,
+      "minStock": 10,
+      "unit": "ədəd"
+    },
+    {
+      "id": "PRD-10004",
+      "barcode": "4760001234570",
+      "name": "Süd 1L",
+      "category": "Süd məhsulları",
+      "price": 2.20,
+      "cost": 1.60,
+      "stock": 40,
+      "minStock": 10,
+      "unit": "ədəd"
+    }
+  ]
+}
